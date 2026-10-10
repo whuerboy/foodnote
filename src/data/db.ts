@@ -9,11 +9,13 @@ import {
   recipeNutrition,
   isDate,
   meals,
+  foodCategories,
 } from "../domain/model";
 export class FoodnoteDB extends Dexie {
   foods!: Table<Food, string>;
   entries!: Table<Entry, string>;
   settings!: Table<Goals, string>;
+  metadata!: Table<{ id: string; value: boolean }, string>;
   constructor(name = "foodnote-v1") {
     super(name);
     this.version(1).stores({
@@ -21,6 +23,7 @@ export class FoodnoteDB extends Dexie {
       entries: "id,date,[date+meal],foodId,createdAt",
       settings: "id",
     });
+    this.version(2).stores({ metadata: "id" });
   }
 }
 export const db = new FoodnoteDB();
@@ -132,7 +135,8 @@ export function validateBackup(value: unknown): Backup {
   const id = (v: unknown) =>
     typeof v === "string" && v.length > 0 && v.length <= 100;
   const unit = (v: unknown) => v === "g" || v === "mL";
-  const basis = (v: unknown) => ["生重", "熟重", "干重"].includes(String(v));
+  const basis = (v: unknown) =>
+    ["生重", "熟重", "干重", "食用状态"].includes(String(v));
   const amount = (v: number) => Number.isFinite(v) && v > 0 && v <= 100000;
   if (
     !b ||
@@ -158,6 +162,7 @@ export function validateBackup(value: unknown): Backup {
     )
       throw Error("备份中的食物数据无效");
     if (
+      (f.category !== undefined && !foodCategories.includes(f.category)) ||
       (f.kind !== undefined && !["食材", "包装食品"].includes(f.kind)) ||
       (f.source !== undefined &&
         (typeof f.source !== "string" || f.source.length > 200))

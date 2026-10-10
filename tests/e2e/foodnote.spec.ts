@@ -3,7 +3,7 @@ async function createOats(page: Page) {
   await page.getByRole("button", { name: "菜单", exact: true }).click();
   await page.getByRole("button", { name: "添加", exact: true }).click();
   await page.getByRole("button", { name: "手动创建食物", exact: true }).click();
-  await page.getByLabel("名称", { exact: true }).fill("燕麦");
+  await page.getByLabel("名称", { exact: true }).fill("测试燕麦");
   await page.getByLabel("重量基准").selectOption("干重");
   await page.getByLabel("热量（kcal）").fill("380");
   await page.getByLabel("蛋白质（g）").fill("13");
@@ -18,7 +18,7 @@ async function recordOats(page: Page) {
   await page.getByLabel("餐次", { exact: true }).selectOption("早餐");
   await page
     .getByLabel("食物", { exact: true })
-    .selectOption({ label: "燕麦 · 干重 · g" });
+    .selectOption({ label: "测试燕麦 · 干重 · g" });
   await page.getByLabel("实际食用量（g）").fill("50");
   await page.getByRole("button", { name: "保存饮食记录", exact: true }).click();
   await expect(page.getByRole("dialog")).toHaveCount(0);
@@ -33,7 +33,7 @@ test("创建、记录、刷新、历史日期和统计", async ({ page }, testIn
     animations: "disabled",
     style: ".toast {visibility:hidden}",
   });
-  await page.locator(".food-open").click();
+  await page.locator(".food-open").filter({ hasText: "测试燕麦" }).click();
   await page.screenshot({
     path: testInfo.outputPath("detail.png"),
     animations: "disabled",
@@ -74,7 +74,7 @@ test("编辑食物保留快照，复制餐次与删除单条记录", async ({ pa
   await createOats(page);
   await recordOats(page);
   await page.getByRole("button", { name: "菜单", exact: true }).click();
-  await page.locator(".food-open").click();
+  await page.locator(".food-open").filter({ hasText: "测试燕麦" }).click();
   await page.getByRole("button", { name: "编辑", exact: true }).click();
   await page.getByLabel("热量（kcal）").fill("100");
   await page.getByRole("button", { name: "保存食物", exact: true }).click();
@@ -91,11 +91,11 @@ test("编辑食物保留快照，复制餐次与删除单条记录", async ({ pa
     .getByRole("button", { name: "查看早餐食物明细", exact: true })
     .click();
   await page
-    .getByRole("button", { name: "显示删除记录燕麦", exact: true })
+    .getByRole("button", { name: "显示删除记录测试燕麦", exact: true })
     .first()
     .click();
   await page
-    .getByRole("button", { name: "删除记录燕麦", exact: true })
+    .getByRole("button", { name: "删除记录测试燕麦", exact: true })
     .first()
     .click();
   await page.getByRole("button", { name: "确认", exact: true }).click();
@@ -125,7 +125,7 @@ test("备份恢复与离线重新打开", async ({ page, context }) => {
   await page.getByRole("button", { name: "添加", exact: true }).click();
   await page
     .getByLabel("食物", { exact: true })
-    .selectOption({ label: "燕麦 · 干重 · g" });
+    .selectOption({ label: "测试燕麦 · 干重 · g" });
   await page.getByRole("button", { name: "保存饮食记录" }).click();
   await expect(page.locator(".summary strong")).toContainText("570");
 });
@@ -177,7 +177,9 @@ test("横向手势、垂直滚动优先与左滑删除", async ({ page }, testIn
   });
   await expect(row).toHaveClass(/swiped/);
   await expect(page.getByLabel("饮食日期")).toHaveValue(before);
-  await page.getByRole("button", { name: "删除记录燕麦", exact: true }).click();
+  await page
+    .getByRole("button", { name: "删除记录测试燕麦", exact: true })
+    .click();
   await page.getByRole("button", { name: "取消", exact: true }).click();
   await expect(page.locator(".summary strong")).toContainText("190");
   await touchEvent(row, "touchstart", {
@@ -200,9 +202,13 @@ test("横向手势、垂直滚动优先与左滑删除", async ({ page }, testIn
   await menuRow.dispatchEvent("pointerdown", { clientX: 280, clientY: 300 });
   await menuRow.dispatchEvent("pointerup", { clientX: 150, clientY: 302 });
   await expect(menuRow).toHaveClass(/swiped/);
-  await page.getByRole("button", { name: "删除菜品燕麦", exact: true }).click();
+  await page
+    .getByRole("button", { name: "删除菜品测试燕麦", exact: true })
+    .click();
   await page.getByRole("button", { name: "确认", exact: true }).click();
-  await expect(page.locator(".food-list .swipe")).toHaveCount(0);
+  await expect(
+    page.locator(".food-open").filter({ hasText: "测试燕麦" }),
+  ).toHaveCount(0);
   await page.getByRole("button", { name: "首页", exact: true }).click();
   await expect(page.locator(".summary strong")).toContainText("190");
 });

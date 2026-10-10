@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Search, ChevronLeft } from "lucide-react";
-import type { Entry, Food } from "../domain/model";
+import { foodCategories, type Entry, type Food } from "../domain/model";
 import { db } from "../data/db";
 import { SwipeableRow } from "../components/SwipeableRow";
 import { FoodIcon } from "../components/FoodIcon";
@@ -19,6 +19,7 @@ export function Menu({
   const [query, setQuery] = useState(""),
     [filter, setFilter] = useState("全部"),
     [kind, setKind] = useState("全部");
+  const [category, setCategory] = useState("全部分类");
   const recent = [...entries]
     .sort((a, b) => b.createdAt - a.createdAt)
     .map((e) => e.foodId);
@@ -26,6 +27,7 @@ export function Menu({
     .filter(
       (f) =>
         f.name.toLowerCase().includes(query.toLowerCase()) &&
+        (category === "全部分类" || (f.category ?? "未分类") === category) &&
         (filter === "已归档" ? f.archived : !f.archived) &&
         (filter !== "收藏" || f.favorite) &&
         (filter !== "最近" || recent.includes(f.id)) &&
@@ -35,7 +37,10 @@ export function Menu({
     .sort((a, b) =>
       filter === "最近"
         ? recent.indexOf(a.id) - recent.indexOf(b.id)
-        : b.updatedAt - a.updatedAt,
+        : b.updatedAt - a.updatedAt ||
+          foodCategories.indexOf(a.category!) -
+            foodCategories.indexOf(b.category!) ||
+          a.name.localeCompare(b.name, "zh-CN"),
     );
   return (
     <>
@@ -70,6 +75,21 @@ export function Menu({
           </button>
         ))}
       </div>
+      <label className="category-select">
+        食物分类
+        <select
+          aria-label="按食物分类筛选"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+        >
+          {["全部分类", ...foodCategories, "未分类"].map((c) => (
+            <option key={c}>{c}</option>
+          ))}
+        </select>
+      </label>
+      <p className="library-note">
+        已内置常用食物，营养按每100g可食部分标注。生熟重量请对应选择；包装食品以实际标签为准，烹调用油另计。
+      </p>
       <div className="section-heading">
         <h2>食物列表</h2>
         <span>{visible.length} 项</span>
@@ -103,8 +123,10 @@ export function Menu({
               <span className="row-title">
                 <strong>{f.name}</strong>
                 <span>
-                  {f.ingredients ? "组合菜品" : (f.kind ?? "食材")} · {f.basis}{" "}
-                  · {f.favorite ? "已收藏" : "可收藏"}
+                  {f.ingredients
+                    ? "组合菜品"
+                    : (f.category ?? f.kind ?? "食材")}{" "}
+                  · {f.basis} · {f.favorite ? "已收藏" : "可收藏"}
                 </span>
                 <span>
                   蛋白 {f.nutrition.protein.toFixed(1)}g · 碳水{" "}

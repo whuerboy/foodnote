@@ -1493,4 +1493,38 @@ h2,
   }
 }
 
-.stats-overview .card { margin-bottom: 0; }
+.stats-overview .card {
+  margin-bottom: 0;
+}
+.category-select {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--sub);
+  margin: 20px 0 12px;
+}
+.category-select select {
+  flex: 1;
+  min-width: 140px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 16px;
+  color: var(--ink);
+}
+.library-note {
+  padding: 14px 16px;
+  background: var(--sage-soft);
+  border-radius: 14px;
+  color: var(--sub);
+  font-size: 12px;
+}
+.nutrition-source {
+  display: block;
+  color: #557b60;
+  text-decoration: underline;
+  margin-top: 8px;
+}

@@ -9,6 +9,7 @@ import {
   WifiOff,
 } from "lucide-react";
 import { registerSW } from "virtual:pwa-register";
+import { initializeCommonFoods } from "./data/commonFoods";
 import { db, defaultGoals, copyMeal } from "./data/db";
 import { localDate, type Food, type Meal, meals } from "./domain/model";
 import { Home } from "./pages/Home";
@@ -54,7 +55,9 @@ export default function App() {
     defaultGoals,
   );
   useEffect(() => {
-    db.open().catch((e) => setFailure(`无法打开本地数据库：${e.message}`));
+    db.open()
+      .then(() => initializeCommonFoods(db))
+      .catch((e) => setFailure(`无法打开本地数据库：${e.message}`));
     const goOnline = () => setOnline(true),
       goOffline = () => setOnline(false);
     window.addEventListener("online", goOnline);

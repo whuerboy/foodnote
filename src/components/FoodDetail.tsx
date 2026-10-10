@@ -62,7 +62,19 @@ export function FoodDetail({
           </li>
           <li>
             <span>数据来源</span>
-            <b>{food.source || "用户手动输入"}</b>
+            <b>
+              {food.source || "用户手动输入"}
+              {food.source?.match(/FDC (\d+)/) && (
+                <a
+                  className="nutrition-source"
+                  href={`https://fdc.nal.usda.gov/food-details/${food.source.match(/FDC (\d+)/)![1]}/nutrients`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  查看原始营养数据
+                </a>
+              )}
+            </b>
           </li>
           <li>
             <span>类别</span>
@@ -84,6 +96,12 @@ export function FoodDetail({
           </div>
         )}
       </section>
+      {food.category && (
+        <p className="muted">
+          食物分类：{food.category} ·
+          按可食部分称重。品种、品牌及烹调方法会影响营养值。
+        </p>
+      )}
       <div className="hero-tools">
         <Button variant="outline" onClick={onFavorite}>
           <Heart size={17} fill={food.favorite ? "currentColor" : "none"} />

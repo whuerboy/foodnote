@@ -3,6 +3,8 @@ import type { ScannedFood } from "./LabelScanner";
 import { useState } from "react";
 import {
   type Food,
+  foodCategories,
+  type FoodCategory,
   type Ingredient,
   nutrientKeys,
   nutrientLabels,
@@ -28,6 +30,9 @@ export function FoodEditor({
   const [name, setName] = useState(food?.name ?? "");
   const [kind, setKind] = useState<NonNullable<Food["kind"]>>(
     food?.kind ?? (scanned ? "包装食品" : "食材"),
+  );
+  const [category, setCategory] = useState<FoodCategory | "">(
+    food?.category ?? "",
   );
   const [source, setSource] = useState(food?.source ?? scanned?.source ?? "");
   const [unit, setUnit] = useState<Food["unit"]>(
@@ -71,6 +76,7 @@ export function FoodEditor({
             icon,
             kind,
             source,
+            ...(category ? { category } : {}),
             nutrition: recipe ? calculated : nutrition,
             favorite: food?.favorite ?? false,
             archived: food?.archived ?? false,
@@ -105,6 +111,19 @@ export function FoodEditor({
           <option>包装食品</option>
         </select>
       </label>
+      <label>
+        食物分类
+        <select
+          aria-label="食物分类"
+          value={category}
+          onChange={(e) => setCategory(e.target.value as FoodCategory | "")}
+        >
+          <option value="">未分类</option>
+          {foodCategories.map((c) => (
+            <option key={c}>{c}</option>
+          ))}
+        </select>
+      </label>
       <div className="field-grid">
         <label>
           计量单位
@@ -125,6 +144,7 @@ export function FoodEditor({
             <option>生重</option>
             <option>熟重</option>
             <option>干重</option>
+            <option>食用状态</option>
           </select>
         </label>
       </div>

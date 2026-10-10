@@ -173,7 +173,7 @@ export function Profile({
           支持本机拍照识别中英文营养成分表，并自动将 kJ / J 换算成 kcal。首次识别需联网加载组件，照片不上传。餐盘营养估算尚未支持。
         </p>
       </section>
-      <p className="footer-note">无需账号 · 本地优先 · Foodnote 1.1</p>
+      <p className="footer-note">无需账号 · 本地优先 · Foodnote 1.2</p>
     </>
   );
 }

@@ -84,7 +84,7 @@ test("kJ 手动录入自动换算，小屏表单独立排布", async ({ page }) 
   ).toBe(true);
   await page.getByRole("button", { name: "保存食物", exact: true }).click();
   await expect(page.locator(".food-list")).toContainText("200.0 kcal");
-  await page.locator(".food-open").click();
+  await page.locator(".food-open").filter({ hasText: "千焦能量" }).click();
   await page.getByRole("button", { name: "编辑", exact: true }).click();
   await page.getByLabel("能量单位", { exact: true }).selectOption("J");
   await expect(page.getByLabel("热量（J）")).toHaveValue("836800");

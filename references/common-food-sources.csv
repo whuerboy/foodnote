@@ -1,0 +1,80 @@
+name,category,basis,fdc_id,USDA_description,source_url
+白米饭（熟，无盐）,主食,熟重,169757,"Rice, white, long-grain, regular, unenriched, cooked without salt",https://fdc.nal.usda.gov/food-details/169757/nutrients
+大米（干）,主食,干重,169756,"Rice, white, long-grain, regular, raw, unenriched",https://fdc.nal.usda.gov/food-details/169756/nutrients
+糙米饭（熟）,主食,熟重,169704,"Rice, brown, long-grain, cooked (Includes foods for USDA's Food Distribution Program)",https://fdc.nal.usda.gov/food-details/169704/nutrients
+糙米（干）,主食,干重,169703,"Rice, brown, long-grain, raw (Includes foods for USDA's Food Distribution Program)",https://fdc.nal.usda.gov/food-details/169703/nutrients
+燕麦片（干，无糖）,主食,干重,173904,"Cereals, oats, regular and quick, not fortified, dry",https://fdc.nal.usda.gov/food-details/173904/nutrients
+小米饭（熟）,主食,熟重,168871,"Millet, cooked",https://fdc.nal.usda.gov/food-details/168871/nutrients
+小米（干）,主食,干重,169702,"Millet, raw",https://fdc.nal.usda.gov/food-details/169702/nutrients
+藜麦（熟）,主食,熟重,168917,"Quinoa, cooked",https://fdc.nal.usda.gov/food-details/168917/nutrients
+藜麦（干）,主食,干重,168874,"Quinoa, uncooked",https://fdc.nal.usda.gov/food-details/168874/nutrients
+意大利面（熟，无盐）,主食,熟重,168928,"Pasta, cooked, unenriched, without added salt",https://fdc.nal.usda.gov/food-details/168928/nutrients
+意大利面（干）,主食,干重,168927,"Pasta, dry, unenriched",https://fdc.nal.usda.gov/food-details/168927/nutrients
+红薯（水煮，去皮）,主食,熟重,168484,"Sweet potato, cooked, boiled, without skin",https://fdc.nal.usda.gov/food-details/168484/nutrients
+土豆（水煮，去皮）,主食,熟重,170440,"Potatoes, boiled, cooked without skin, flesh, without salt",https://fdc.nal.usda.gov/food-details/170440/nutrients
+甜玉米（生，去芯）,主食,生重,169998,"Corn, sweet, yellow, raw",https://fdc.nal.usda.gov/food-details/169998/nutrients
+全麦面包（通用）,主食,食用状态,172688,"Bread, whole-wheat, commercially prepared",https://fdc.nal.usda.gov/food-details/172688/nutrients
+鸡胸肉（去皮，生）,肉蛋奶,生重,171077,"Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw",https://fdc.nal.usda.gov/food-details/171077/nutrients
+鸡胸肉（去皮，烤熟）,肉蛋奶,熟重,171477,"Chicken, broilers or fryers, breast, meat only, cooked, roasted",https://fdc.nal.usda.gov/food-details/171477/nutrients
+猪里脊（瘦，生）,肉蛋奶,生重,168249,"Pork, fresh, loin, tenderloin, separable lean only, raw",https://fdc.nal.usda.gov/food-details/168249/nutrients
+猪里脊（瘦，烤熟）,肉蛋奶,熟重,168250,"Pork, fresh, loin, tenderloin, separable lean only, cooked, roasted",https://fdc.nal.usda.gov/food-details/168250/nutrients
+瘦牛肉末（5%脂肪，生）,肉蛋奶,生重,171790,"Beef, ground, 95% lean meat / 5% fat, raw",https://fdc.nal.usda.gov/food-details/171790/nutrients
+三文鱼（养殖，生）,肉蛋奶,生重,175167,"Fish, salmon, Atlantic, farmed, raw",https://fdc.nal.usda.gov/food-details/175167/nutrients
+三文鱼（养殖，烤熟）,肉蛋奶,熟重,175168,"Fish, salmon, Atlantic, farmed, cooked, dry heat",https://fdc.nal.usda.gov/food-details/175168/nutrients
+大西洋鳕鱼（生）,肉蛋奶,生重,171955,"Fish, cod, Atlantic, raw",https://fdc.nal.usda.gov/food-details/171955/nutrients
+虾仁（生，通用）,肉蛋奶,生重,174210,"Crustaceans, shrimp, mixed species, raw (may contain additives to retain moisture)",https://fdc.nal.usda.gov/food-details/174210/nutrients
+虾仁（水煮，通用）,肉蛋奶,熟重,171971,"Crustaceans, shrimp, mixed species, cooked, moist heat (may contain additives to retain moisture)",https://fdc.nal.usda.gov/food-details/171971/nutrients
+鸡蛋（生，去壳）,肉蛋奶,生重,171287,"Egg, whole, raw, fresh",https://fdc.nal.usda.gov/food-details/171287/nutrients
+鸡蛋（水煮，去壳）,肉蛋奶,熟重,173424,"Egg, whole, cooked, hard-boiled",https://fdc.nal.usda.gov/food-details/173424/nutrients
+鸡蛋白（生）,肉蛋奶,生重,172183,"Egg, white, raw, fresh",https://fdc.nal.usda.gov/food-details/172183/nutrients
+全脂牛奶（3.25%脂肪）,肉蛋奶,食用状态,172217,"Milk, whole, 3.25% milkfat, without added vitamin A and vitamin D",https://fdc.nal.usda.gov/food-details/172217/nutrients
+脱脂牛奶（通用）,肉蛋奶,食用状态,173432,"Milk, nonfat, fluid, without added vitamin A and vitamin D (fat free or skim)",https://fdc.nal.usda.gov/food-details/173432/nutrients
+原味全脂酸奶（通用）,肉蛋奶,食用状态,171284,"Yogurt, plain, whole milk",https://fdc.nal.usda.gov/food-details/171284/nutrients
+原味脱脂希腊酸奶（通用）,肉蛋奶,食用状态,170894,"Yogurt, Greek, plain, nonfat (Includes foods for USDA's Food Distribution Program)",https://fdc.nal.usda.gov/food-details/170894/nutrients
+硬豆腐（通用）,豆制品,生重,172475,"Tofu, raw, firm, prepared with calcium sulfate",https://fdc.nal.usda.gov/food-details/172475/nutrients
+软豆腐（通用）,豆制品,生重,172449,"Tofu, soft, prepared with calcium sulfate and magnesium chloride (nigari)",https://fdc.nal.usda.gov/food-details/172449/nutrients
+毛豆（水煮，去荚无盐）,豆制品,熟重,169283,"Soybeans, green, cooked, boiled, drained, without salt",https://fdc.nal.usda.gov/food-details/169283/nutrients
+小扁豆（水煮，无盐）,豆制品,熟重,172421,"Lentils, mature seeds, cooked, boiled, without salt",https://fdc.nal.usda.gov/food-details/172421/nutrients
+红芸豆（水煮，无盐）,豆制品,熟重,175194,"Beans, kidney, red, mature seeds, cooked, boiled, without salt",https://fdc.nal.usda.gov/food-details/175194/nutrients
+西兰花（生）,蔬菜,生重,170379,"Broccoli, raw",https://fdc.nal.usda.gov/food-details/170379/nutrients
+菠菜（生）,蔬菜,生重,168462,"Spinach, raw",https://fdc.nal.usda.gov/food-details/168462/nutrients
+大白菜（生）,蔬菜,生重,169979,"Cabbage, chinese (pe-tsai), raw",https://fdc.nal.usda.gov/food-details/169979/nutrients
+小白菜（生）,蔬菜,生重,170390,"Cabbage, chinese (pak-choi), raw",https://fdc.nal.usda.gov/food-details/170390/nutrients
+卷心菜（生）,蔬菜,生重,169975,"Cabbage, raw",https://fdc.nal.usda.gov/food-details/169975/nutrients
+番茄（生）,蔬菜,生重,170457,"Tomatoes, red, ripe, raw, year round average",https://fdc.nal.usda.gov/food-details/170457/nutrients
+黄瓜（带皮，生）,蔬菜,生重,168409,"Cucumber, with peel, raw",https://fdc.nal.usda.gov/food-details/168409/nutrients
+胡萝卜（生）,蔬菜,生重,170393,"Carrots, raw",https://fdc.nal.usda.gov/food-details/170393/nutrients
+白蘑菇（鲜）,蔬菜,生重,169251,"Mushrooms, white, raw",https://fdc.nal.usda.gov/food-details/169251/nutrients
+香菇（鲜）,蔬菜,生重,169242,"Mushrooms, shiitake, raw",https://fdc.nal.usda.gov/food-details/169242/nutrients
+红甜椒（生）,蔬菜,生重,170108,"Peppers, sweet, red, raw",https://fdc.nal.usda.gov/food-details/170108/nutrients
+茄子（生）,蔬菜,生重,169228,"Eggplant, raw",https://fdc.nal.usda.gov/food-details/169228/nutrients
+西葫芦（生）,蔬菜,生重,169291,"Squash, summer, zucchini, includes skin, raw",https://fdc.nal.usda.gov/food-details/169291/nutrients
+洋葱（生）,蔬菜,生重,170000,"Onions, raw",https://fdc.nal.usda.gov/food-details/170000/nutrients
+南瓜（生）,蔬菜,生重,168448,"Pumpkin, raw",https://fdc.nal.usda.gov/food-details/168448/nutrients
+生菜（罗马生菜，生）,蔬菜,生重,169247,"Lettuce, cos or romaine, raw",https://fdc.nal.usda.gov/food-details/169247/nutrients
+香蕉（去皮）,水果,生重,173944,"Bananas, raw",https://fdc.nal.usda.gov/food-details/173944/nutrients
+苹果（带皮，去核）,水果,生重,171688,"Apples, raw, with skin (Includes foods for USDA's Food Distribution Program)",https://fdc.nal.usda.gov/food-details/171688/nutrients
+橙子（去皮）,水果,生重,169097,"Oranges, raw, all commercial varieties",https://fdc.nal.usda.gov/food-details/169097/nutrients
+草莓（去蒂）,水果,生重,167762,"Strawberries, raw",https://fdc.nal.usda.gov/food-details/167762/nutrients
+猕猴桃（绿）,水果,生重,168153,"Kiwifruit, green, raw",https://fdc.nal.usda.gov/food-details/168153/nutrients
+葡萄（去梗）,水果,生重,174683,"Grapes, red or green (European type, such as Thompson seedless), raw",https://fdc.nal.usda.gov/food-details/174683/nutrients
+西瓜（果肉）,水果,生重,167765,"Watermelon, raw",https://fdc.nal.usda.gov/food-details/167765/nutrients
+蓝莓（鲜）,水果,生重,171711,"Blueberries, raw",https://fdc.nal.usda.gov/food-details/171711/nutrients
+扁桃仁（巴旦木）,坚果,食用状态,170567,"Nuts, almonds",https://fdc.nal.usda.gov/food-details/170567/nutrients
+核桃仁,坚果,食用状态,170187,"Nuts, walnuts, english",https://fdc.nal.usda.gov/food-details/170187/nutrients
+花生仁（生）,坚果,生重,172430,"Peanuts, all types, raw",https://fdc.nal.usda.gov/food-details/172430/nutrients
+芝麻（干）,坚果,干重,170150,"Seeds, sesame seeds, whole, dried",https://fdc.nal.usda.gov/food-details/170150/nutrients
+橄榄油,调味料,食用状态,171413,"Oil, olive, salad or cooking",https://fdc.nal.usda.gov/food-details/171413/nutrients
+大豆油,调味料,食用状态,171411,"Oil, soybean, salad or cooking",https://fdc.nal.usda.gov/food-details/171411/nutrients
+芝麻油,调味料,食用状态,171016,"Oil, sesame, salad or cooking",https://fdc.nal.usda.gov/food-details/171016/nutrients
+无盐黄油,调味料,食用状态,173430,"Butter, without salt",https://fdc.nal.usda.gov/food-details/173430/nutrients
+食盐,调味料,食用状态,173468,"Salt, table",https://fdc.nal.usda.gov/food-details/173468/nutrients
+白砂糖,调味料,食用状态,169655,"Sugars, granulated",https://fdc.nal.usda.gov/food-details/169655/nutrients
+蜂蜜,调味料,食用状态,169640,Honey,https://fdc.nal.usda.gov/food-details/169640/nutrients
+酱油（通用，非品牌）,调味料,食用状态,174277,Soy sauce made from soy and wheat (shoyu),https://fdc.nal.usda.gov/food-details/174277/nutrients
+白醋（蒸馏醋）,调味料,食用状态,172237,"Vinegar, distilled",https://fdc.nal.usda.gov/food-details/172237/nutrients
+蚝油（通用，非品牌）,调味料,食用状态,174529,"Sauce, oyster, ready-to-serve",https://fdc.nal.usda.gov/food-details/174529/nutrients
+番茄调味酱（通用）,调味料,食用状态,168556,Catsup,https://fdc.nal.usda.gov/food-details/168556/nutrients
+黑胡椒粉,调味料,干重,170931,"Spices, pepper, black",https://fdc.nal.usda.gov/food-details/170931/nutrients
+大蒜（生）,调味料,生重,169230,"Garlic, raw",https://fdc.nal.usda.gov/food-details/169230/nutrients
+花生酱（无盐，通用）,调味料,食用状态,172470,"Peanut butter, smooth style, without salt",https://fdc.nal.usda.gov/food-details/172470/nutrients

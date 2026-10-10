@@ -1,3 +1,13 @@
+export const foodCategories = [
+  "主食",
+  "肉蛋奶",
+  "豆制品",
+  "蔬菜",
+  "水果",
+  "坚果",
+  "调味料",
+] as const;
+export type FoodCategory = (typeof foodCategories)[number];
 export const meals = ["早餐", "午餐", "晚餐", "加餐"] as const;
 export type Meal = (typeof meals)[number];
 export type Nutrition = {
@@ -17,10 +27,11 @@ export type Food = {
   id: string;
   name: string;
   unit: "g" | "mL";
-  basis: "生重" | "熟重" | "干重";
+  basis: "生重" | "熟重" | "干重" | "食用状态";
   icon: string;
   kind?: "食材" | "包装食品";
   source?: string;
+  category?: FoodCategory;
   nutrition: Nutrition;
   favorite: boolean;
   archived: boolean;
