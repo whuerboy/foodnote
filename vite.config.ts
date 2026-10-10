@@ -32,7 +32,19 @@ export default defineConfig({
         ],
       },
       workbox: {
+        clientsClaim: true,
         globPatterns: ["**/*.{js,css,html,png,svg}"],
+        globIgnores: ["**/ocr/**"],
+        runtimeCaching: [
+          {
+            urlPattern: ({ url }) => url.pathname.includes("/ocr/"),
+            handler: "CacheFirst",
+            options: {
+              cacheName: "foodnote-ocr-v1",
+              cacheableResponse: { statuses: [0, 200] },
+            },
+          },
+        ],
         navigateFallback: "index.html",
         maximumFileSizeToCacheInBytes: 4000000,
       },

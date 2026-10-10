@@ -1,3 +1,5 @@
+import { fromKcal, toKcal, type EnergyUnit } from "../domain/label";
+import type { ScannedFood } from "./LabelScanner";
 import { useState } from "react";
 import {
   type Food,
@@ -13,23 +15,30 @@ import { FoodIcon, foodIcons, iconLabels } from "./FoodIcon";
 export function FoodEditor({
   food,
   initialRecipe = false,
+  scanned,
   foods,
   onSaved,
 }: {
   food?: Food;
   initialRecipe?: boolean;
+  scanned?: ScannedFood;
   foods: Food[];
   onSaved: () => void;
 }) {
   const [name, setName] = useState(food?.name ?? "");
   const [kind, setKind] = useState<NonNullable<Food["kind"]>>(
-    food?.kind ?? "食材",
+    food?.kind ?? (scanned ? "包装食品" : "食材"),
   );
-  const [source, setSource] = useState(food?.source ?? "");
-  const [unit, setUnit] = useState<Food["unit"]>(food?.unit ?? "g");
+  const [source, setSource] = useState(food?.source ?? scanned?.source ?? "");
+  const [unit, setUnit] = useState<Food["unit"]>(
+    food?.unit ?? scanned?.unit ?? "g",
+  );
   const [basis, setBasis] = useState<Food["basis"]>(food?.basis ?? "生重");
   const [icon, setIcon] = useState(food?.icon ?? "oats");
-  const [nutrition, setNutrition] = useState(food?.nutrition ?? { ...zero });
+  const [nutrition, setNutrition] = useState(
+    food?.nutrition ?? scanned?.nutrition ?? { ...zero },
+  );
+  const [energyUnit, setEnergyUnit] = useState<EnergyUnit>("kcal");
   const [recipe, setRecipe] = useState(
     food ? !!food.ingredients : initialRecipe,
   );
@@ -232,19 +241,50 @@ export function FoodEditor({
       ) : (
         <>
           <p className="muted">填写食品包装或可靠来源上的每100{unit}营养值。</p>
+          <label>
+            能量单位
+            <select
+              aria-label="能量单位"
+              value={energyUnit}
+              onChange={(e) => setEnergyUnit(e.target.value as EnergyUnit)}
+            >
+              <option value="kcal">kcal（千卡 / 大卡）</option>
+              <option value="kJ">kJ（千焦）</option>
+              <option value="J">J（焦耳）</option>
+            </select>
+          </label>
+          {energyUnit !== "kcal" && (
+            <p className="energy-result">
+              自动换算：每100{unit} ≈ {nutrition.calories.toFixed(2)} kcal
+            </p>
+          )}
           <div className="field-grid">
             {nutrientKeys.map((k) => (
               <label key={k}>
-                {nutrientLabels[k]}（{k === "calories" ? "kcal" : "g"}）
+                {nutrientLabels[k]}（{k === "calories" ? energyUnit : "g"}）
                 <input
                   required
                   type="number"
                   min="0"
-                  max="100000"
+                  max={k === "calories" ? fromKcal(100000, energyUnit) : 100000}
                   step="any"
-                  value={nutrition[k]}
+                  value={
+                    Number.isFinite(nutrition[k])
+                      ? k === "calories"
+                        ? Number(fromKcal(nutrition[k], energyUnit).toFixed(6))
+                        : nutrition[k]
+                      : ""
+                  }
                   onChange={(e) =>
-                    setNutrition({ ...nutrition, [k]: Number(e.target.value) })
+                    setNutrition({
+                      ...nutrition,
+                      [k]:
+                        e.target.value === ""
+                          ? NaN
+                          : k === "calories"
+                            ? toKcal(Number(e.target.value), energyUnit)
+                            : Number(e.target.value),
+                    })
                   }
                 />
               </label>

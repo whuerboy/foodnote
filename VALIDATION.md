@@ -1,17 +1,17 @@
 # Foodnote 验收结果
 
-执行日期：2026-10-10（Asia/Shanghai）。环境：macOS ARM64，Node.js v22.23.2。
+执行日期：2026-10-11（Asia/Shanghai）。环境：macOS ARM64，Node.js v22.23.2。
 
 ## 实际执行
 
 | 检查 | 结果 |
 | --- | --- |
 | TypeScript + Vite 生产构建 | 通过，生成 dist/ |
-| Service Worker 构建 | 通过，预缓存24项，约846KiB；含懒加载统计模块 |
-| Vitest 5.0.3 | 12/12 通过 |
-| Playwright：iPhone 13视口 / Chromium | 6/6 通过 |
-| Playwright：iPhone 13视口 / WebKit | 6/6 通过 |
-| Playwright：桌面 Chromium | 6/6 通过 |
+| Service Worker 构建 | 通过，预缓存24项，约874KiB；含懒加载统计模块 |
+| Vitest 5.0.3 | 15/15 通过 |
+| Playwright：iPhone 13视口 / Chromium | 10/10 通过 |
+| Playwright：iPhone 13视口 / WebKit | 10/10 通过 |
+| Playwright：桌面 Chromium | 10/10 通过 |
 | npm 安装时依赖审计 | 升级 Vitest 后 0 项问题 |
 | V4 界面截图检查 | 已对照原型首页，并检查 WebKit 首页、菜单、食物详情、统计和设置截图 |
 
@@ -46,9 +46,13 @@
 
 ## 未验证或未实现
 
-- 现已收到并对照 diet_pwa_v4.html。参考副本位于 references/，10个SVG直接提取自原型。保留真实应用的收藏/最近/归档、备份恢复等操作，并采用桌面宽单栏和 Radix 创建/编辑弹层，未声称所有页面逐像素一致。
+- 现已收到并对照 diet_pwa_v4.html。参考副本位于 references/，10个SVG直接提取自原型。保留真实应用的收藏/最近/归档、备份恢复等操作，并采用桌面双列餐次卡和 Radix 创建/编辑弹层，未声称所有页面逐像素一致。
 - 没有真实 iPhone 实机的主屏幕安装、系统级安全区、后台/长期存储测试；浏览器自动化不是实机验收。
-- 未发布到公网HTTPS；已提供 dist/ 生产部署包和本地预览。
-- 在线图像识别未接入；没有AI调用或图片上传。
+- 已发布至 https://whuerboy.github.io/foodnote/，使用 GitHub Pages 自动构建发布。
+- 本机中英文营养成分表 OCR 已接入；餐盘营养估算未支持，没有在线AI调用或图片上传。
 
 首次使用的数据为空。截图中燕麦来自隔离的自动化测试数据，不会写入用户应用的数据库。
+
+## 1.1 验证
+
+15项业务测试和30项浏览器交互测试全部通过。新增覆盖 kJ/J/kcal 换算、每份含量折算、中英文标签图片实际 OCR、核对后创建并保存、断网再次识别，以及320/390/768/1024/1440px 自适应布局。缺失数值留空，不猜测能量单位；测试中中文千焦误读时保持待确认。已修复首次打开时组件未缓存导致的离线识别失败。手机与桌面截图人工检查通过。真实 iPhone 摄像头和低内存设备尚未实机验证。

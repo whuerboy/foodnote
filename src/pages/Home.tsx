@@ -235,7 +235,7 @@ export function Home({
       </div>
       <button className="quick-action" onClick={onScan}>
         <Camera size={19} />
-        拍照识别食物（尚未接入）
+        拍照识别营养标签
       </button>
       <p className="check-tip">
         <Info size={15} />

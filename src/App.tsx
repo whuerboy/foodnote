@@ -16,6 +16,7 @@ import { Menu } from "./pages/Menu";
 import { Profile } from "./pages/Profile";
 import { Modal } from "./components/Modal";
 import { FoodDetail } from "./components/FoodDetail";
+import { LabelScanner, type ScannedFood } from "./components/LabelScanner";
 import { FoodEditor } from "./components/FoodEditor";
 import { EntryForm } from "./components/EntryForm";
 import { Button } from "./components/ui/button";
@@ -23,7 +24,7 @@ const Stats = lazy(() =>
   import("./pages/Stats").then((m) => ({ default: m.Stats })),
 );
 type Panel =
-  | { type: "food"; food?: Food; recipe?: boolean }
+  | { type: "food"; food?: Food; recipe?: boolean; scanned?: ScannedFood }
   | { type: "entry"; food?: Food; meal: Meal }
   | { type: "copy"; meal: Meal }
   | { type: "choice" }
@@ -229,6 +230,7 @@ export default function App() {
               <FoodEditor
                 food={panel.food}
                 initialRecipe={panel.recipe}
+                scanned={panel.scanned}
                 foods={foods}
                 onSaved={saved}
               />
@@ -279,19 +281,14 @@ export default function App() {
                 variant="ghost"
                 onClick={() => setPanel({ type: "scan" })}
               >
-                拍照识别（尚未接入）
+                拍照识别营养标签
               </Button>
             </div>
           )}
           {panel.type === "scan" && (
-            <div className="form-stack">
-              <p>
-                在线图像识别尚未接入。当前不会上传照片，请根据包装营养标签手动创建食物。
-              </p>
-              <Button onClick={() => setPanel({ type: "food" })}>
-                手动创建食物
-              </Button>
-            </div>
+            <LabelScanner
+              onAccept={(scanned) => setPanel({ type: "food", scanned })}
+            />
           )}
           {panel.type === "choice" && (
             <div className="form-stack">

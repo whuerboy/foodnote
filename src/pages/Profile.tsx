@@ -170,10 +170,10 @@ export function Profile({
       <section className="card">
         <h2>图像识别</h2>
         <p className="muted">
-          在线图像识别尚未支持。已预留服务接口，当前请手动填写营养数据。
+          支持本机拍照识别中英文营养成分表，并自动将 kJ / J 换算成 kcal。首次识别需联网加载组件，照片不上传。餐盘营养估算尚未支持。
         </p>
       </section>
-      <p className="footer-note">无需账号 · 本地优先 · Foodnote 1.0</p>
+      <p className="footer-note">无需账号 · 本地优先 · Foodnote 1.1</p>
     </>
   );
 }
